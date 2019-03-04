@@ -13,7 +13,7 @@ var RepPrinter = RepPrinter || (function () {
     //---- INFO ----//
 
     var version = '0.1',
-		repstrings = {equipment: '^(?:repeating_equipment_).+$', utility: '^(?:repeating_utility_).+$', offense: '^(?:repeating_offense_).+$', ammo: '^(?:repeating_ammo_).+$', spells: '^(?:repeating_spell).+$', spell0: '^(?:repeating_spell0).+$', spell1: '^(?:repeating_spell1).+$', spell2: '^(?:repeating_spell2).+$', spell3: '^(?:repeating_spell3).+$', spell4: '^(?:repeating_spell4).+$', spell5: '^(?:repeating_spell5).+$', spell6: '^(?:repeating_spell6).+$', spell7: '^(?:repeating_spell7).+$', spell8: '^(?:repeating_spell8).+$', spell9: '^(?:repeating_spell9).+$', skills: '^(?:repeating_skill_).+$', armor: '^(?:repeating_armor_).+$', class: '^(?:repeating_class_).+$', modifiers: '^(?:repeating_modifier_).+$', random: '^.*REPLACE.*$'},
+		repstrings = {equipment: '^(?:repeating_equipment_).+$', utility: '^(?:repeating_utility_).+$', offense: '^(?:repeating_offense_).+$', ammo: '^(?:repeating_ammo_).+$', spells: '^(?:repeating_spell).+$', spell0: '^(?:repeating_spell0).+$', spell1: '^(?:repeating_spell1).+$', spell2: '^(?:repeating_spell2).+$', spell3: '^(?:repeating_spell3).+$', spell4: '^(?:repeating_spell4).+$', spell5: '^(?:repeating_spell5).+$', spell6: '^(?:repeating_spell6).+$', spell7: '^(?:repeating_spell7).+$', spell8: '^(?:repeating_spell8).+$', spell9: '^(?:repeating_spell9).+$', skills: '^(?:repeating_skill_).+$', armor: '^(?:repeating_armor_).+$', class: '^(?:repeating_class_).+$', modifiers: '^(?:repeating_modifier_).+$', attachers: '^(?:repeating_attacher_).+$', random: '^.*REPLACE.*$'},
         styles = {
             box:  'background-color: #fff; border: 1px solid #000; padding: 8px 10px; border-radius: 6px; margin-left: -40px; margin-right: 0px;',
             title: 'padding: 0 0 10px 0; color: ##591209; font-size: 1.5em; font-weight: bold; font-variant: small-caps; font-family: "Times New Roman",Times,serif;',
@@ -34,9 +34,9 @@ var RepPrinter = RepPrinter || (function () {
 			var parms = msg.content.split(/\s+/i);
 			if (parms.length > 2) {
 				var char_id = parms[1];
-				if (parms[2].match(/^(?:equipment|spell[s0-9]{1}|utility|offense|ammo|skills|armor|class|modifier|random)$/i) == null) {
+				if (parms[2].match(/^(?:equipment|spell[s0-9]{1}|utility|offense|ammo|skills|armor|class|modifiers|attachers|random)$/i) == null) {
 					var valid_categories = _.map(_.keys(repstrings), function(x) {return x;});
-                    showDialog('Error', '"' + parms[2] + '" is not a valid category. Valid categories are equipment, spells, utility, offense, ammo, skills, armor, class, and modifiers.<br><br>You may also narrow the spells down by using "spell" plus the spell level with no spaces. Use spell0 for cantrips.<br><br>To search for other strings, use "random" as the category and send your string as the last option.<br><br>Please try again.');
+                    showDialog('Error', '"' + parms[2] + '" is not a valid category. Valid categories are equipment, spells, utility, offense, ammo, skills, armor, class, modifiers, and attachers.<br><br>You may also narrow the spells down by using "spell" plus the spell level with no spaces. Use spell0 for cantrips.<br><br>To search for other strings, use "random" as the category and send your string as the last option.<br><br>Please try again.');
 				} else {
 					var category = parms[2].toLowerCase();
                     var character = getObj('character', char_id);
