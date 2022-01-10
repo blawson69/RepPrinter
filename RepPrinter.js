@@ -152,7 +152,7 @@ var RepPrinter = RepPrinter || (function () {
     },
 
     commandCSV = function (char_id) {
-        //OGL Sheet only!
+        //OGL Sheet inventory only!
         var ids = [], items = [], charAttrs = findObjs({type: 'attribute', characterid: char_id}, {caseInsensitive: true});
         var itemNames = _.filter(charAttrs, function (attr) { return attr.get('name').match(/^repeating_inventory_(.+)_itemname$/) !== null; });
         var elements = ['itemname', 'itemproperties', 'itemmodifiers', 'itemweight', 'hasattack', 'useasresource', 'itemcontent', 'equipped'];
@@ -211,11 +211,11 @@ var RepPrinter = RepPrinter || (function () {
         message += '<div style=\'' + styles.title + '\'>Results Output</div>';
         message += 'When turned on, results are sent to the Chat Window. When off they will be printed to the API Output Console. <a style="' + styles.textButton + '" href="!print config --toggle-screen"> turn ' + (state['RepPrinter'].screen_output ? 'off' : 'on') + '</a><br><br>';
 
-        message += '<div style=\'' + styles.title + '\'>Results Archiving</div>';
-        message += 'When turned on, results sent to the Chat Window will be archived. This <b>cannot</b> archive results sent to the API Output Console. <a style="' + styles.textButton + '" href="!print config --toggle-archive"> turn ' + (state['RepPrinter'].store_chat ? 'off' : 'on') + '</a><br><br>';
-
         message += '<div style=\'' + styles.title + '\'>Name Abbreviation</div>';
-        message += 'When turned on, attribute names for repeating sections will be abbreviated to only include text after the attribute ID. <a style="' + styles.textButton + '" href="!print config --toggle-abbreviate"> turn ' + (state['RepPrinter'].shorten_name ? 'off' : 'on') + '</a>';
+        message += 'When turned on, attribute names for repeating sections will be abbreviated to only include text after the attribute ID. <a style="' + styles.textButton + '" href="!print config --toggle-abbreviate"> turn ' + (state['RepPrinter'].shorten_name ? 'off' : 'on') + '</a><br><br>';
+
+        message += '<div style=\'' + styles.title + '\'>Results Archiving</div>';
+        message += 'When turned on, results sent to the Chat Window will be archived. This <b>cannot</b> archive results sent to the API Output Console. <a style="' + styles.textButton + '" href="!print config --toggle-archive"> turn ' + (state['RepPrinter'].store_chat ? 'off' : 'on') + '</a>';
 
         message += '<div style="' + styles.buttonWrapper + '"><a style="' + styles.button + '" href="!print help">Help Menu ➤</a></div>';
 
@@ -247,7 +247,7 @@ var RepPrinter = RepPrinter || (function () {
 
     // Prevent proccessing of macros and roll template markdown when results are sent to chat
     generateSafeOutput = function (text) {
-        var safeText = text.toString().replace(/\{/g, '«').replace(/\}/g, '»').replace(/\[/g, '‹').replace(/\]/g, '›');
+        var safeText = text.toString().replace(/\{/g, '&#123;').replace(/\}/g, '&#125;').replace(/\[/g, '&#91;').replace(/\]/g, '&#93;');
         return safeText;
     },
 

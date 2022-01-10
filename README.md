@@ -91,10 +91,7 @@ Here are some sample macros:
 ## Configuration
 You can set various output options based on the information you are looking for.
 - **Results Output** - You can choose to send results to either the Chat Window or the API Output Console. The Output Console is the safest place to send results, but requires having the API Scripts page open in a separate tab and jumping back and forth. Copying the results to use elsewhere, if needed, will require a few more steps to clean up the text.
-
-  If you send results to the Chat Window, the results with be formatted to allow easy copying right from the window. However, to keep Roll20 from processing any macros or roll templates that exist in the text, RepPrinter will make the following substitutions: Curly Braces `{}` are replaced with Left and Right Angle Quotation Marks `«»` while Brackets `[]` are replaced with Left and Right Single Quotation Marks `‹›`.
-
-- **Results Archiving** - When sending resuls to the Chat Window, you can choose whether these results are archived for future reference. By default, archiving is turned off.
 - **Name Abbreviation** - Attribute names for repeating sections all begin with "repeating" followed by the section name (inventory, armor, etc.) and then the attribute ID, all separated with underscores (_). This "repeating_section-name_attribute-id_attribute-name" naming can take up a lot of room, particularly when that part of the name is not relevant to you. To accommodate this, you can remove the "repeating_section-name_attribute-id" portion of attribute names by turning this feature on. By default, name abbreviation is off.
 
   Note: This applies to all searches except for the [Current Value](#search-methods) search type.
+- **Results Archiving** - When sending resuls to the Chat Window, you can choose whether these results are archived for future reference. By default, archiving is turned off.
